@@ -11,8 +11,8 @@ export const WeatherApp = () => {
 
   const [searchPage, setSearchPage] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
-  const [lat, setLat] = useState(null);
-  const [long, setLong] = useState(null);
+  const [lat, setLat] = useState(0);
+  const [long, setLong] = useState(0);
   const [weatherData, setWeatherData] = useState()
   const [tempUnit, setTempUnit] = useState('celsius')
 
@@ -39,7 +39,7 @@ export const WeatherApp = () => {
         setLat(latitude);
         setLong(longitude);
       }, (error) => {
-        alert('Something went wrong getting your position!')
+        console.log('Something went wrong getting your position!')
       },options)
     }
   }

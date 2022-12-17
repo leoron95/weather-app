@@ -24,7 +24,7 @@ return (
         />
 
             <div className='flex flex-col h-[326px] relative'>
-                <div className='bg-[url("./assets/Cloud-background.png")]  bg-cover bg-no-repeat bg-center opacity-10 h-full'>
+                <div className='bg-[url("/assets/Cloud-background.png")]  bg-cover bg-no-repeat bg-center opacity-10 h-full'>
                     </div>
                 <img className='absolute inset-0 m-auto w-32 h-32 ' src={icon} alt="" />
             </div>

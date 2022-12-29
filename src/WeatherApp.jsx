@@ -42,6 +42,10 @@ export const WeatherApp = () => {
 
         <WeatherPronostication weatherData={weatherData} tempUnit={tempUnit}/>
         <WeatherHightlights weatherData={weatherData} tempUnit={tempUnit}/>
+
+        <footer className='text-[#E7E7EB] mt-10 text-center'>
+        Created by <a className='text-blue-600' href="https://github.com/leoron95">leoron95</a> - <a href="https://devchallenges.io/">devChallenges.io</a> 
+        </footer>
       </div>
       
     </div>

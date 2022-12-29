@@ -13,7 +13,6 @@ export const useFetchSuggestions = () => {
             const response = await fetch(`${baseUrl}/search.json?key=${API_KEY}&q=${city}`);
 
           const data = await response.json()
-          console.log(data);
           setSuggestions(data)
         } catch (error) {
           console.log('There was an error with fetch request:' + error.message);

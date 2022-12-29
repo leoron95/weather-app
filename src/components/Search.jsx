@@ -9,7 +9,7 @@ export const Search = ({setSearchPage, getDataWithCityName}) => {
     const [inputValue, setInputValue] = useState('')
 
     const {suggestions, getSuggestions } = useFetchSuggestions()
-    console.log(suggestions);
+
 
     const inputFocus = useRef(null);
 
@@ -30,7 +30,6 @@ export const Search = ({setSearchPage, getDataWithCityName}) => {
         const newInputValue = inputValue.trim()
         if(newInputValue.length <= 1) return;
         getDataWithCityName(inputValue)
-        console.log(inputValue);
         setInputValue('');
         setSearchPage(false);
     }

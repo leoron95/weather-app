@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import { useRef } from 'react'
 import { DebounceInput } from 'react-debounce-input'
+import { useFetchSuggestions } from '../hooks'
 
-const baseUrl = 'https://api.weatherapi.com/v1/search'
 
 export const Search = ({setSearchPage, getDataWithCityName}) => {
 
     const [inputValue, setInputValue] = useState('')
-    const [suggestions, setSuggestions] = useState([])
+
+    const {suggestions, getSuggestions } = useFetchSuggestions()
+    console.log(suggestions);
 
     const inputFocus = useRef(null);
 
@@ -33,24 +35,15 @@ export const Search = ({setSearchPage, getDataWithCityName}) => {
         setSearchPage(false);
     }
 
-    const getSuggestions = async (city) => {
-        try {
-          const response = await fetch(`${baseUrl}.json?key=${import.meta.env.VITE_WEATHER_API_KEY}&q=${city}`);
 
-          const data = await response.json()
-          setSuggestions(data)
-        } catch (error) {
-          console.log('There was an error with fetch request:' + error.message);
-        }
-      }
-
-    const handleClick = () => {
-        getDataWithCityName(inputValue)
+    const handleClick = (name, country, region) => {
+        const city = `${name}, ${region}, ${country}`
+        getDataWithCityName(city)
         setSearchPage(false);
     }
 
 return (
-    <div className='pt-4 px-3 flex flex-col min-h-[672px] lg:h-[1023px]'>
+    <div className='pt-4 px-3 flex flex-col min-h-[672px] lg:h-[1023px] '>
 
         <button className='flex flex-row justify-end mb-8' onClick={handleClose}>
             <i className="fa-solid fa-xmark text-[#E7E7EB] fa-lg"></i>
@@ -81,10 +74,10 @@ return (
         <ul className='mt-9 '>
 
         {
-        suggestions.map( (item) => (
+            suggestions?.map( ({name, country, region, id}) => (
             
-            <li onClick={()=>handleClick(item.name)} key={item.id} className='h-16 w-full text-base font-medium text-[#E7E7EB] hover:border-[1px] hover:border-[#616475] pl-3 pt-[23px] mb-2 flex flex-row justify-between cursor-pointer '>
-                {item.name}, {item.region}
+            <li onClick={()=>handleClick(name, country, region)} key={id} className='h-16 w-full text-base font-medium text-[#E7E7EB] hover:border-[1px] hover:border-[#616475] pl-3 pt-[23px] mb-2 flex flex-row justify-between cursor-pointer '>
+                {name}, {region}, {country}
                 <span className='pr-2.5'>
                     <i className="fa-solid fa-angle-right text-[#616475]"></i>
                 </span>

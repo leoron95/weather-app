@@ -3,21 +3,21 @@ import isTomorrow from 'dayjs/plugin/isTomorrow'
 dayjs.extend(isTomorrow)
 
 export const PronosticationCard = ({
-  maxtemp_c,
-  mintemp_c,
-  condition,
-  date,
-  tempUnit
+  tempmax,
+  tempmin,
+  datetime,
+  tempUnit,
+  icon
 }) => {
 
-  const minTempC = Math.round(mintemp_c)
-  const maxTempC = Math.round(maxtemp_c)
+  const minTempC = Math.round(tempmin)
+  const maxTempC = Math.round(tempmax)
 
   const minTempF = Math.round(minTempC * (9 / 5) + 32)
   const maxTempF = Math.round(maxTempC * (9 / 5) + 32)
-  const day = dayjs(date).format('ddd, D MMM')
+  const day = dayjs(datetime).format('ddd, D MMM')
 
-  const isTomorrow = dayjs(date).add(1).isTomorrow()
+  const isTomorrow = dayjs(datetime).add(1).isTomorrow()
 
   return (
     <div className='h-44 w-[120px] bg-[#1E213A] flex flex-col items-center'>
@@ -30,7 +30,7 @@ export const PronosticationCard = ({
             }
         </h1>
 
-        <img src={condition.icon} className='h-16 w-14 mt-2.5' alt="" />
+        <img src={`/assets/icons/${icon}-min.svg`} className='h-16 w-14 mt-2.5 animate__animated animate__fadeIn' alt="" />
         
         <p className='text-base font-medium text-[#E7E7EB] mt-5 '>
           {

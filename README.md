@@ -25,7 +25,7 @@
 
 ## Screenshot
 
-![screenshot](https://res.cloudinary.com/dssxy8tpd/image/upload/v1672309410/screencapture-weather-app-teal-alpha-vercel-app-2022-12-29-06_22_48_q3johi.png)
+![screenshot](https://res.cloudinary.com/dssxy8tpd/image/upload/v1672310293/screencapture-weather-app-teal-alpha-vercel-app-2022-12-29-06_37_28_fqwffp.png)
 
 ### Built With
 
